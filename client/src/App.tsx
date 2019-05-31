@@ -1,6 +1,6 @@
 import React from 'react';
 import { GlobalStyle } from './style';
-import Header from './common/header';
+import Header from './common/header/index';
 
 function App() {
   return (

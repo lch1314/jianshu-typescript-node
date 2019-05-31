@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5",                           // 编译成es5语法
+    "module": "esnext",
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [                                            // 编译过程中需要引入的库文件的列表
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,                                   // 允许编译javascript文件
+    "skipLibCheck": true,                              // 默认值false 这里为true表示检查默认库文件（lib.d.ts）的正确性
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,         // 默认值false 这里为true表示允许不一致包装引用相同的文件
+    "moduleResolution": "node",                       // 决定如何处理模块
+    "resolveJsonModule": true,
+    "isolatedModules": true,                         // 默认为false 表示无条件地给没有解析的文件生成imports
+    "noEmit": true,                                  // 默认为false 这里为true表示生成输出文件
+    "jsx": "preserve"          // 在'.tsx'文件里支持JSX。'React'或'Preserve' 在preserve模式下生成代码中会保留JSX以供后续的转换操作使用（比如：Babel。使用后续的`babel-loader`进行处理）。 另外，输出文件会带有.jsx扩展名。 react模式会生成React.createElement，在使用前不需要再进行转换操作了，输出文件的扩展名为.js
+  },
+  "include": [
+    "src"
+  ]
+}
