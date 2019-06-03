@@ -10,7 +10,18 @@ import {
     SearchWrapper
 } from './style';
 
-class Header extends Component {
+interface Props {
+}
+
+class Header extends Component<Props, any> {
+    constructor(props: Props) {
+        super(props)
+        this.state = {
+            focused: false
+        }
+        this.handleInputFocus = this.handleInputFocus.bind(this)
+        this.handleInputBlur = this.handleInputBlur.bind(this)
+    }
     render() {
         return (
             <HeaderWrapper>
@@ -23,8 +34,12 @@ class Header extends Component {
                         <span className="iconfont">&#xe636;</span>
                     </NavItem>
                     <SearchWrapper>
-                        <NavSearch></NavSearch>
-                        <span className="iconfont">&#xe64d;</span>
+                        <NavSearch
+                            className={this.state.focused ? 'focused' : ''}
+                            onFocus={this.handleInputFocus}
+                            onBlur={this.handleInputBlur}
+                        ></NavSearch>
+                        <span className={this.state.focused ? 'focused iconfont' : 'iconfont'}>&#xe64d;</span>
                     </SearchWrapper>
                 </Nav>
                 <Addition>
@@ -36,6 +51,18 @@ class Header extends Component {
                 </Addition>
             </HeaderWrapper>
         )
+    }
+
+    handleInputFocus() {
+        this.setState({
+            focused: true
+        })
+    }
+
+    handleInputBlur() {
+        this.setState({
+            focused: false
+        })
     }
 }
 
