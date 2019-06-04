@@ -10,11 +10,8 @@ import {
     SearchWrapper
 } from './style';
 
-interface Props {
-}
-
-class Header extends Component<Props, any> {
-    constructor(props: Props) {
+class Header extends Component {
+    constructor(props) {
         super(props)
         this.state = {
             focused: false
