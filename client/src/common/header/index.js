@@ -1,6 +1,7 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
+import { actionCreators }  from './store';
 import {
     HeaderWrapper,
     Logo,
@@ -12,7 +13,7 @@ import {
     SearchWrapper
 } from './style';
 
-const Header = (props) => {
+const Header = ({header, dispatch}) => {
     return (
         <HeaderWrapper>
             <Logo />
@@ -25,17 +26,23 @@ const Header = (props) => {
                 </NavItem>
                 <SearchWrapper>
                     <CSSTransition
-                        in={props.focused}
+                        in={header.focused}
                         timeout={200}
                         classNames="slide"
                     >
                         <NavSearch
-                            className={props.focused ? 'focused' : ''}
-                            onFocus={props.handleInputFocus}
-                            onBlur={props.handleInputBlur}
+                            className={header.focused ? 'focused' : ''}
+                            // onFocus={props.handleInputFocus}
+                            // onBlur={props.handleInputBlur}
+                            onFocus={() => {
+                                dispatch(actionCreators.searchFocus())
+                            }}
+                            onBlur={() => {
+                                dispatch(actionCreators.searchBlur())
+                            }}
                         ></NavSearch>
                     </CSSTransition>
-                    <span className={props.focused ? 'focused iconfont' : 'iconfont'}>&#xe64d;</span>
+                    <span className={header.focused ? 'focused iconfont' : 'iconfont'}>&#xe64d;</span>
                 </SearchWrapper>
             </Nav>
             <Addition>
@@ -49,27 +56,23 @@ const Header = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        focused: state.header.focused
-    }
-}
+// const mapStateToProps = (state) => {
+//     return {
+//         focused: state.header.focused
+//     }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        handleInputFocus() {
-            const action = {
-                type: 'serach_focus',
-            }
-            dispatch(action)
-        },
-        handleInputBlur() {
-            const action = {
-                type: 'serach_blur',
-            }
-            dispatch(action)
-        }
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         handleInputFocus() {
+//             dispatch(actionCreators.searchFocus())
+//         },
+//         handleInputBlur() {
+//             dispatch(actionCreators.searchBlur())
+//         }
+//     }
+// }
+// export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+export default connect((header) => header)(Header);
