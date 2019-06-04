@@ -14,6 +14,8 @@ import {
 } from './style';
 
 const Header = ({header, dispatch}) => {
+    // 现在header是个immutable对象，所以使用的时候需要通过get方法获取对应的数据
+    const focused = header.get('focused');
     return (
         <HeaderWrapper>
             <Logo />
@@ -26,12 +28,12 @@ const Header = ({header, dispatch}) => {
                 </NavItem>
                 <SearchWrapper>
                     <CSSTransition
-                        in={header.focused}
+                        in={focused}
                         timeout={200}
                         classNames="slide"
                     >
                         <NavSearch
-                            className={header.focused ? 'focused' : ''}
+                            className={focused ? 'focused' : ''}
                             // onFocus={props.handleInputFocus}
                             // onBlur={props.handleInputBlur}
                             onFocus={() => {
@@ -42,7 +44,7 @@ const Header = ({header, dispatch}) => {
                             }}
                         ></NavSearch>
                     </CSSTransition>
-                    <span className={header.focused ? 'focused iconfont' : 'iconfont'}>&#xe64d;</span>
+                    <span className={focused ? 'focused iconfont' : 'iconfont'}>&#xe64d;</span>
                 </SearchWrapper>
             </Nav>
             <Addition>
