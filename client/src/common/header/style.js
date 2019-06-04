@@ -47,6 +47,18 @@ export const NavItem = styled.div`
 export const SearchWrapper = styled.div`
     float: left;
     position: relative;
+    .slide-enter {
+        transition: all .2s ease-out;
+    }
+    .slide-enter-active {
+        width: 250px;
+    }
+    .slide-exit {
+        transition: all .2s ease-out;
+    }
+    .slide-exit-active {
+        width: 160px;
+    }
     .iconfont {
         position: absolute;
         right: 5px;
@@ -76,16 +88,17 @@ export const NavSearch = styled.input.attrs({
     background-color: #eee;
     font-size: 14px;
     color: #666;
-    transition: all .2s ease-out;
+    /* transition: all .2s ease-out; */
     &::placeholder {
         color: #999;
     }
     &.focused {
         width: 250px;
     }
-    &:focus {
+    /* 通过伪类:focus也可以设置动画 */
+    /* &:focus {
         width: 250px;
-    }
+    } */
 `;
 
 export const Addition = styled.div`
