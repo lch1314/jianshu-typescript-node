@@ -4,7 +4,11 @@ import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
     focused: false,
-    list: []
+    mouseIn: false,
+    list: [],
+    page: 1,
+    totalPage: 1,
+    iconRotate: 0
 })
 
 export default (state=defaultState, action) => {
@@ -15,7 +19,19 @@ export default (state=defaultState, action) => {
         case constants.SEARCH_BLUR:
             return state.set('focused', false);
         case constants.CHANGE_LIST:
-            return state.set('list', action.data);
+            // return state.set('list', action.data).set('totalPage', action.totalPage);
+            return state.merge({
+                list: action.data,
+                totalPage: action.totalPage
+            })
+        case constants.MOUSE_ENTER:
+            return state.set('mouseIn', true);
+        case constants.MOUSE_LEAVE:
+            return state.set('mouseIn', false);
+        case constants.CHANGE_PAGE:
+            return state.set('page', action.page);
+        case constants.ROTATA_ICON:
+            return state.set('iconRotate', action.rotate);
         default:
             return state
     }
