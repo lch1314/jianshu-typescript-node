@@ -27,11 +27,9 @@ class Header extends Component {
         const pageList = [];
         if(jsList.length) {
             for(let i = (page -1)*10; i < page*10; i++) {
-                if(jsList[i]) {
-                    pageList.push(
-                        <SearchInfoItem key={jsList[i]}>{jsList[i]}</SearchInfoItem>
-                    )
-                }
+                jsList[i] && pageList.push(
+                    <SearchInfoItem key={jsList[i]}>{jsList[i]}</SearchInfoItem>
+                )
             }
         }
         return (
@@ -52,7 +50,7 @@ class Header extends Component {
                         >
                             <NavSearch
                                 className={focused ? 'focused' : ''}
-                                onFocus={handleInputFocus}
+                                onFocus={() => handleInputFocus(list)}
                                 onBlur={handleInputBlur}
                             ></NavSearch>
                         </CSSTransition>
@@ -104,8 +102,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleInputFocus() {
-            dispatch(actionCreators.getList())
+        handleInputFocus(list) {
+            // 只有list的size为0的时候才让它去请求数据
+            (list.size === 0) && dispatch(actionCreators.getList());
             dispatch(actionCreators.searchFocus())
         },
         handleInputBlur() {
