@@ -5,7 +5,6 @@ import { RecommendWrapper, RecommendItem } from '../style';
 class Recommend extends Component {
     render () {
         const { list } = this.props;
-        console.log(list)
         return (
             <RecommendWrapper>
                 {
