@@ -63,6 +63,25 @@ const defaultState = fromJS({
            "imgUrl": "//upload-images.jianshu.io/upload_images/9741289-cf7f4aa6a55801ed?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240",
            "desc": "作者丨纳达丶无忌 https://www.jianshu.com/p/40d4c7aebd66 引 如果对什么是线程、什么是进程仍存有疑惑，请先..."  
         },
+    ],
+    recommendList: [
+        {
+            "id": 1,
+            "imgUrl": "https://cdn2.jianshu.io/assets/web/banner-s-club-aa8bdf19f8cf729a759da42e4a96f366.png"
+        },
+        {
+            "id": 2,
+            "imgUrl": "https://cdn2.jianshu.io/assets/web/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png"
+        },
+        {
+            "id": 3,
+            "imgUrl": "https://cdn2.jianshu.io/assets/web/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png"
+        },
+        {
+            "id": 4,
+            "imgUrl": "https://cdn2.jianshu.io/assets/web/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png"
+        },
+
     ]
 })
 

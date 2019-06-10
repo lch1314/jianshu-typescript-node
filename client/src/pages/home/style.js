@@ -18,7 +18,7 @@ export const HomeLeft = styled.div`
 
 export const HomeRight = styled.div`
     float: right;
-    width: 240px;
+    width: 280px;
 `;
 
 export const TopicWrapper = styled.div`
@@ -72,6 +72,26 @@ export const ListInfo = styled.div`
         line-height: 24px;
         font-size: 13px;
         color: #999;
-
     }
+`;
+
+export const RecommendWrapper = styled.div`
+    margin: 30px 0;
+    width: 280px;
+`;
+
+export const RecommendItem = styled.div`
+    height: 50px;
+    width: 280px;
+    background: url(${(props) => props.imgUrl});
+    background-size: contain;
+`;
+
+export const WriteWrapper = styled.div`
+    width: 278px;
+    border: 1px solid #dcdcdc;
+    border-radius: 3px;
+    height: 300px;
+    line-height: 300px;
+    text-align: center;
 `;
