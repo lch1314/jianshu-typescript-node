@@ -18,11 +18,12 @@ import {
     SearchInfoItem,
     SearchInfoList
 } from './style';
+import { actionCreators as loginActionCreators } from '../../pages/login/store';
 
 class Header extends Component {
     render() {
         const { focused, handleInputFocus, handleInputBlur, list, page, handleMouseEnter, handleMouseLeave, mouseIn, 
-            handleChangePage, totalPage, iconRotate } = this.props;
+            handleChangePage, totalPage, iconRotate, login, loginOut } = this.props;
         // 将immutable对象转换成js对象
         const jsList = list.toJS();
         const pageList = [];
@@ -41,7 +42,9 @@ class Header extends Component {
                 <Nav>
                     <NavItem className='left active'>首页</NavItem>
                     <NavItem className='left'>下载App</NavItem>
-                    <NavItem className='right'>登录</NavItem>
+                    {
+                        login? <NavItem className='right' onClick={loginOut}>退出</NavItem>: <Link to="/login"><NavItem className='right'>登录</NavItem></Link>
+                    }
                     <NavItem className='right'>
                         <span className="iconfont">&#xe636;</span>
                     </NavItem>
@@ -100,6 +103,7 @@ const mapStateToProps = (state) => {
         mouseIn: state.getIn(['header', 'mouseIn']),  
         totalPage: state.getIn(['header', 'totalPage']),
         iconRotate:  state.getIn(['header', 'iconRotate']),
+        login: state.getIn(['login', 'login'])
     }
 }
 
@@ -132,6 +136,9 @@ const mapDispatchToProps = (dispatch) => {
             }
             // 第二种方式
             dispatch(actionCreators.rotateIcon(iconrotate + 360))
+        },
+        loginOut() {
+            dispatch(loginActionCreators.loginOut())
         }
     }
 }
