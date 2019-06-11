@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Topic from './components/Topic';
 import List from './components/List';
@@ -7,7 +7,7 @@ import Writer from './components/Writer';
 import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style';
 import { actionCreators } from './store';
 
-class Home extends Component {
+class Home extends PureComponent {
     handleScrollTop() {
         // scrollTo(xpos,ypos) 方法可把内容滚动到指定的坐标
         // xpos   必需。要在窗口文档显示区左上角显示的文档的 x 坐标
